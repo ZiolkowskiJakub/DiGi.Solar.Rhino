@@ -14,7 +14,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("ae9530b9-6069-40f7-aa41-8971fcb4c4b9");
+        public override Guid ComponentGuid => new ("ae9530b9-6069-40f7-aa41-8971fcb4c4b9");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -40,10 +40,11 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-
-                result.Add(new Param(new GooTimeSeriesParam() { Name = "TimeSeries", NickName = "TimeSeries", Description = "TimeSeries", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new GooEnumParam() { Name = "ShadingCalculationType", NickName = "ShadingCalculationType", Description = "ShadingCalculationType", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
+                List<Param> result =
+                [
+                    new Param(new GooTimeSeriesParam() { Name = "TimeSeries", NickName = "TimeSeries", Description = "TimeSeries", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooEnumParam() { Name = "ShadingCalculationType", NickName = "ShadingCalculationType", Description = "ShadingCalculationType", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
 
                 Param_Number param_Number;
 
@@ -55,7 +56,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 param_Number.SetPersistentData(Core.Constans.Tolerance.Distance);
                 result.Add(new Param(param_Number, ParameterVisibility.Voluntary));
 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -66,9 +67,11 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooShadingCalculatorOptionsParam() { Name = "ShadingCalculatorOptions", NickName = "ShadingCalculatorOptions", Description = "DiGi Solar ShadingCalculatorOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                return result.ToArray();
+                List<Param> result =
+                [
+                    new Param(new GooShadingCalculatorOptionsParam() { Name = "ShadingCalculatorOptions", NickName = "ShadingCalculatorOptions", Description = "DiGi Solar ShadingCalculatorOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
+                return [.. result];
             }
         }
 
@@ -83,8 +86,8 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
             int index;
 
             index = Params.IndexOfInputParam("TimeSeries");
-            ITimeSeries timeSeries = null;
-            if (index == -1 || !dataAccess.GetData(index, ref timeSeries))
+            ITimeSeries? timeSeries = null;
+            if (index == -1 || !dataAccess.GetData(index, ref timeSeries) || timeSeries is null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
@@ -112,7 +115,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 dataAccess.GetData(index, ref angleTolerance);
             }
 
-            ComputeSharp.Classes.ShadingCalculatorOptions shadingCalculatorOptions = new ComputeSharp.Classes.ShadingCalculatorOptions()
+            ComputeSharp.Classes.ShadingCalculatorOptions shadingCalculatorOptions = new()
             {
                 TimeSeries = timeSeries,
                 ShadingCalculationType = shadingCalculationType,

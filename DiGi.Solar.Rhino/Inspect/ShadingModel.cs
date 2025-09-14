@@ -8,14 +8,14 @@ namespace DiGi.Solar.Rhino
     public static partial class Inspect
     {
         [Inspect("ShadingElements", "ShadingElements", "ShadingElements")]
-        public static IEnumerable ShadingElements(this Solar.Classes.ShadingModel shadingModel)
+        public static IEnumerable? ShadingElements(this Solar.Classes.ShadingModel? shadingModel)
         {
             if (shadingModel == null)
             {
                 return null;
             }
 
-            return shadingModel.GetShadingElements<IShadingElement>().ConvertAll(x => new GooShadingElement(x));
+            return shadingModel.GetShadingElements<IShadingElement>()?.ConvertAll(x => new GooShadingElement(x));
         }
     }
 }

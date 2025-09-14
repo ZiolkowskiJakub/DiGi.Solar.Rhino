@@ -15,7 +15,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("b3cf736f-8cfe-41b2-93af-fb802f5e12a8");
+        public override Guid ComponentGuid => new ("b3cf736f-8cfe-41b2-93af-fb802f5e12a8");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -41,12 +41,14 @@ namespace DiGi.Solar.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooPolygonalFace3DParam() { Name = "PolygonalFace3D", NickName = "PolygonalFace3D", Description = "DiGi Solar PolygonalFace3D", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new Param_String() { Name = "Reference", NickName = "Reference", Description = "Reference", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary));
-                result.Add(new Param(new Param_Boolean() { Name = "ShadingOnly", NickName = "ShadingOnly", Description = "ShadingOnly", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary));
+                List<Param> result =
+                [
+                    new Param(new GooPolygonalFace3DParam() { Name = "PolygonalFace3D", NickName = "PolygonalFace3D", Description = "DiGi Solar PolygonalFace3D", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new Param_String() { Name = "Reference", NickName = "Reference", Description = "Reference", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary),
+                    new Param(new Param_Boolean() { Name = "ShadingOnly", NickName = "ShadingOnly", Description = "ShadingOnly", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary),
+                ];
 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -57,9 +59,11 @@ namespace DiGi.Solar.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooShadingElementParam() { Name = "ShadingElement", NickName = "ShadingElement", Description = "DiGi Solar ShadingElement", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                return result.ToArray();
+                List<Param> result =
+                [
+                    new Param(new GooShadingElementParam() { Name = "ShadingElement", NickName = "ShadingElement", Description = "DiGi Solar ShadingElement", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
+                return [.. result];
             }
         }
 
@@ -74,14 +78,14 @@ namespace DiGi.Solar.Rhino.Classes
             int index;
 
             index = Params.IndexOfInputParam("PolygonalFace3D");
-            IPolygonalFace3D polygonalFace3D = null;
+            IPolygonalFace3D? polygonalFace3D = null;
             if (index == -1 || !dataAccess.GetData(index, ref polygonalFace3D) || polygonalFace3D == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
-            string reference = null;
+            string? reference = null;
             index = Params.IndexOfInputParam("Reference");
             if (index != -1)
             {
@@ -95,7 +99,7 @@ namespace DiGi.Solar.Rhino.Classes
                 dataAccess.GetData(index, ref shadingOnly);
             }
 
-            Solar.Classes.ShadingElement shadingElement = new Solar.Classes.ShadingElement(reference, polygonalFace3D, shadingOnly);
+            Solar.Classes.ShadingElement shadingElement = new (reference, polygonalFace3D, shadingOnly);
 
             index = Params.IndexOfOutputParam("ShadingElement");
             if (index != -1)

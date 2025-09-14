@@ -11,7 +11,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         {
         }
 
-        public GooShadingCalculatorOptions(ComputeSharp.Classes.ShadingCalculatorOptions shadingCalculatorOptions)
+        public GooShadingCalculatorOptions(ComputeSharp.Classes.ShadingCalculatorOptions? shadingCalculatorOptions)
             : base()
         {
             Value = shadingCalculatorOptions;
@@ -25,7 +25,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
 
     public class GooShadingCalculatorOptionsParam : GooPresistentParam<GooShadingCalculatorOptions, ComputeSharp.Classes.ShadingCalculatorOptions>
     {
-        public override Guid ComponentGuid => new Guid("a678253f-1c7d-40e8-b858-e213d865362f");
+        public override Guid ComponentGuid => new ("a678253f-1c7d-40e8-b858-e213d865362f");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 

@@ -1,4 +1,5 @@
-﻿using DiGi.Geometry.Core.Interfaces;
+﻿using DiGi.Core;
+using DiGi.Geometry.Core.Interfaces;
 using DiGi.Rhino.Geometry.Core.Classes;
 using DiGi.Solar.Interfaces;
 using Grasshopper.Kernel.Types;
@@ -13,16 +14,16 @@ namespace DiGi.Solar.Rhino.Classes
         {
         }
 
-        public GooShadingModel(Solar.Classes.ShadingModel shadingModel)
+        public GooShadingModel(Solar.Classes.ShadingModel? shadingModel)
         {
             Value = shadingModel;
         }
 
-        public override IGeometry[] Geometries
+        public override IGeometry[]? Geometries
         {
             get
             {
-                return Value?.GetShadingElements<IShadingElement>().ConvertAll(x => x.PolygonalFace3D).ToArray();
+                return Value?.GetShadingElements<IShadingElement>()?.ConvertAll(x => x.PolygonalFace3D).FilterNulls()?.ToArray();
             }
         }
 
@@ -35,7 +36,7 @@ namespace DiGi.Solar.Rhino.Classes
 
     public class GooShadingModelParam : GooBakeAwareSerializableParam<GooShadingModel, Solar.Classes.ShadingModel>
     {
-        public override Guid ComponentGuid => new Guid("994c9cee-be9b-4c4f-acb7-59e2cab747fd");
+        public override Guid ComponentGuid => new ("994c9cee-be9b-4c4f-acb7-59e2cab747fd");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }

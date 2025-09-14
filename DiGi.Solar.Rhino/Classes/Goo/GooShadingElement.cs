@@ -14,17 +14,16 @@ namespace DiGi.Solar.Rhino.Classes
         {
         }
 
-        public GooShadingCalculationResult(IShadingCalculationResult shadingCalculationResult)
+        public GooShadingCalculationResult(IShadingCalculationResult? shadingCalculationResult)
         {
             Value = shadingCalculationResult;
         }
 
-        public override IGeometry[] Geometries
+        public override IGeometry[]? Geometries
         {
             get
             {
-                GeometricalShadingCalculationResult geometricalShadingCalculationResult = Value as GeometricalShadingCalculationResult;
-                if(geometricalShadingCalculationResult == null)
+                if (Value is not GeometricalShadingCalculationResult geometricalShadingCalculationResult)
                 {
                     return null;
                 }
@@ -42,7 +41,7 @@ namespace DiGi.Solar.Rhino.Classes
 
     public class GooShadingCalculationResultParam : GooBakeAwareSerializableParam<GooShadingCalculationResult, IShadingCalculationResult>
     {
-        public override Guid ComponentGuid => new Guid("7e77b407-41d2-48fa-aead-a314514721d7");
+        public override Guid ComponentGuid => new ("7e77b407-41d2-48fa-aead-a314514721d7");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }

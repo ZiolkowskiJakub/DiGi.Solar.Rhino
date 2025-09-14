@@ -8,7 +8,7 @@ namespace DiGi.Solar.Rhino
     public static partial class Inspect
     {
         [Inspect("PolygonalFace3Ds", "PolygonalFace3Ds", "PolygonalFace3Ds")]
-        public static IEnumerable PolygonalFace3Ds(this GeometricalShadingCalculationResult geometricalShadingCalculationResult)
+        public static IEnumerable? PolygonalFace3Ds(this GeometricalShadingCalculationResult? geometricalShadingCalculationResult)
         {
             if (geometricalShadingCalculationResult == null)
             {

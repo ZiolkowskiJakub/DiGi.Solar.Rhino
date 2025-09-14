@@ -8,7 +8,7 @@ namespace DiGi.Solar.Rhino
     public static partial class Inspect
     {
         [Inspect("Reference", "Reference", "Reference")]
-        public static GH_String Reference(this IShadingElement shadingElement)
+        public static GH_String? Reference(this IShadingElement? shadingElement)
         {
             if (shadingElement == null)
             {
@@ -19,7 +19,7 @@ namespace DiGi.Solar.Rhino
         }
 
         [Inspect("ShadingOnly", "ShadingOnly", "ShadingOnly")]
-        public static GH_Boolean ShadingOnly(this IShadingElement shadingElement)
+        public static GH_Boolean? ShadingOnly(this IShadingElement? shadingElement)
         {
             if (shadingElement == null)
             {
@@ -30,7 +30,7 @@ namespace DiGi.Solar.Rhino
         }
 
         [Inspect("PolygonalFace3D", "PolygonalFace3D", "PolygonalFace3D")]
-        public static GooPolygonalFace3D PolygonalFace3D(this IShadingElement shadingElement)
+        public static GooPolygonalFace3D? PolygonalFace3D(this IShadingElement? shadingElement)
         {
             if (shadingElement == null)
             {

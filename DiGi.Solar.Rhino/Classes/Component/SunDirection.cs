@@ -15,7 +15,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("1d5fddd1-6565-41a7-93ca-f405556cb1fe");
+        public override Guid ComponentGuid => new ("1d5fddd1-6565-41a7-93ca-f405556cb1fe");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -41,19 +41,19 @@ namespace DiGi.Solar.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-
-                result.Add(new Param(new GooEnumParam() { Name = "UTC", NickName = "UTC", Description = "DiGi UTC", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new GooCoordinatesParam() { Name = "Coordinates", NickName = "Coordinates", Description = "Coordinates", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-
-                result.Add(new Param(new Param_Time() { Name = "Time", NickName = "Time", Description = "Time", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
+                List<Param> result =
+                [
+                    new Param(new GooEnumParam() { Name = "UTC", NickName = "UTC", Description = "DiGi UTC", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooCoordinatesParam() { Name = "Coordinates", NickName = "Coordinates", Description = "Coordinates", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new Param_Time() { Name = "Time", NickName = "Time", Description = "Time", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
 
                 Param_Boolean param_Boolean;
 
                 param_Boolean = new Param_Boolean() { Name = "IncludeNight", NickName = "IncludeNight", Description = "IncludeNight", Access = GH_ParamAccess.item, Optional = true };
                 param_Boolean.SetPersistentData(false);
                 result.Add(new Param(param_Boolean, ParameterVisibility.Voluntary));
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -64,9 +64,11 @@ namespace DiGi.Solar.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooVector3DParam() { Name = "Direction", NickName = "Direction", Description = "Sun Direction", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                return result.ToArray();
+                List<Param> result =
+                [
+                    new Param(new GooVector3DParam() { Name = "Direction", NickName = "Direction", Description = "Sun Direction", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
+                return [.. result];
             }
         }
 
@@ -90,14 +92,14 @@ namespace DiGi.Solar.Rhino.Classes
 
             index = Params.IndexOfInputParam("Time");
             DateTime dateTime = DateTime.Now;
-            if (index == -1 || !dataAccess.GetData(index, ref dateTime) || dateTime == null)
+            if (index == -1 || !dataAccess.GetData(index, ref dateTime) )
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
             index = Params.IndexOfInputParam("Coordinates");
-            Core.Classes.Coordinates coordinates = null;
+            Core.Classes.Coordinates? coordinates = null;
             if (index == -1 || !dataAccess.GetData(index, ref coordinates) || coordinates == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
@@ -111,7 +113,7 @@ namespace DiGi.Solar.Rhino.Classes
                 dataAccess.GetData(index, ref includeNight);
             }
 
-            Geometry.Spatial.Classes.Vector3D direction = Query.SunDirection(coordinates, uTC, dateTime, includeNight);
+            Geometry.Spatial.Classes.Vector3D? direction = Query.SunDirection(coordinates, uTC, dateTime, includeNight);
 
             index = Params.IndexOfOutputParam("Direction");
             if (index != -1)

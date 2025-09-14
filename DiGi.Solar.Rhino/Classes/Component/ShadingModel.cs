@@ -13,7 +13,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("4a4d50a7-855b-43d8-970f-0722df8f69d2");
+        public override Guid ComponentGuid => new ("4a4d50a7-855b-43d8-970f-0722df8f69d2");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -39,12 +39,14 @@ namespace DiGi.Solar.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooEnumParam() { Name = "UTC", NickName = "UTC", Description = "DiGi UTC", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new GooCoordinatesParam() { Name = "Coordinates", NickName = "Coordinates", Description = "Coordinates", Access = GH_ParamAccess.item}, ParameterVisibility.Binding));
-                result.Add(new Param(new GooShadingElementParam() { Name = "ShadingElements", NickName = "ShadingElements", Description = "ShadingElements", Access = GH_ParamAccess.list}, ParameterVisibility.Binding));
+                List<Param> result =
+                [
+                    new Param(new GooEnumParam() { Name = "UTC", NickName = "UTC", Description = "DiGi UTC", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooCoordinatesParam() { Name = "Coordinates", NickName = "Coordinates", Description = "Coordinates", Access = GH_ParamAccess.item}, ParameterVisibility.Binding),
+                    new Param(new GooShadingElementParam() { Name = "ShadingElements", NickName = "ShadingElements", Description = "ShadingElements", Access = GH_ParamAccess.list}, ParameterVisibility.Binding),
+                ];
 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -55,9 +57,11 @@ namespace DiGi.Solar.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "DiGi Solar ShadingModel", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                return result.ToArray();
+                List<Param> result =
+                [
+                    new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "DiGi Solar ShadingModel", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
+                return [.. result];
             }
         }
 
@@ -80,7 +84,7 @@ namespace DiGi.Solar.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("Coordinates");
-            Core.Classes.Coordinates coordinates = null;
+            Core.Classes.Coordinates? coordinates = null;
             if (index == -1 || !dataAccess.GetData(index, ref coordinates) || coordinates == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
@@ -88,14 +92,14 @@ namespace DiGi.Solar.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("ShadingElements");
-            List<IShadingElement> shadingElements = new List<IShadingElement>();
+            List<IShadingElement> shadingElements = [];
             if (index == -1 || !dataAccess.GetDataList(index, shadingElements) || shadingElements == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
-            Solar.Classes.ShadingModel shadingModel = new Solar.Classes.ShadingModel(uTC, coordinates);
+            Solar.Classes.ShadingModel shadingModel = new(uTC, coordinates);
             foreach(IShadingElement shadingElement in shadingElements)
             {
                 shadingModel.Update(shadingElement);

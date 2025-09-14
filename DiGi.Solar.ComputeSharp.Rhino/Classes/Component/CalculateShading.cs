@@ -14,7 +14,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("89b2166c-ffd3-4f38-b8d2-a28f578dae7f");
+        public override Guid ComponentGuid => new ("89b2166c-ffd3-4f38-b8d2-a28f578dae7f");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -40,11 +40,13 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "ShadingModel", Access = GH_ParamAccess.item}, ParameterVisibility.Binding));
-                result.Add(new Param(new GooShadingCalculatorOptionsParam() { Name = "ShadingCalculatorOptions", NickName = "ShadingCalculatorOptions", Description = "ShadingCalculatorOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
+                List<Param> result =
+                [
+                    new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "ShadingModel", Access = GH_ParamAccess.item}, ParameterVisibility.Binding),
+                    new Param(new GooShadingCalculatorOptionsParam() { Name = "ShadingCalculatorOptions", NickName = "ShadingCalculatorOptions", Description = "ShadingCalculatorOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -55,11 +57,13 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "DiGi Solar ShadingModel", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new GooShadingCalculationResultParam() { Name = "ShadingCalculationResults", NickName = "ShadingCalculationResults", Description = "DiGi Solar ShadingCalculationResult", Access = GH_ParamAccess.list, Optional = true }, ParameterVisibility.Voluntary));
+                List<Param> result =
+                [
+                    new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "DiGi Solar ShadingModel", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooShadingCalculationResultParam() { Name = "ShadingCalculationResults", NickName = "ShadingCalculationResults", Description = "DiGi Solar ShadingCalculationResult", Access = GH_ParamAccess.list, Optional = true }, ParameterVisibility.Voluntary),
+                ];
 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -74,24 +78,29 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
             int index;
 
             index = Params.IndexOfInputParam("ShadingModel");
-            Solar.Classes.ShadingModel shadingModel = null;
+            Solar.Classes.ShadingModel? shadingModel = null;
             if (index == -1 || !dataAccess.GetData(index, ref shadingModel) || shadingModel == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
+            shadingModel = Core.Query.Clone(shadingModel);
+            if (shadingModel is null)
+            {
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
+                return;
+            }
+
             index = Params.IndexOfInputParam("ShadingCalculatorOptions");
-            ComputeSharp.Classes.ShadingCalculatorOptions shadingCalculatorOptions = null;
+            ComputeSharp.Classes.ShadingCalculatorOptions? shadingCalculatorOptions = null;
             if (index == -1 || !dataAccess.GetData(index, ref shadingCalculatorOptions) || shadingCalculatorOptions == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
-            shadingModel = Core.Query.Clone(shadingModel);
-
-            ShadingCalculator shadingCalculator = new ShadingCalculator(shadingModel, shadingCalculatorOptions);
+            ShadingCalculator shadingCalculator = new (shadingModel, shadingCalculatorOptions);
             shadingCalculator.Calculate();
 
             index = Params.IndexOfOutputParam("ShadingModel");
@@ -103,7 +112,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
             index = Params.IndexOfOutputParam("ShadingCalculationResults");
             if (index != -1)
             {
-                List<IShadingCalculationResult> shadingCalculationResults = shadingModel.GetShadingCalculationResults<IShadingCalculationResult>();
+                List<IShadingCalculationResult>? shadingCalculationResults = shadingModel!.GetShadingCalculationResults<IShadingCalculationResult>();
                 dataAccess.SetDataList(index, shadingCalculationResults?.ConvertAll(x => new GooShadingCalculationResult(x)));
             }
         }
