@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.ComputeSharp.Rhino.Classes
 {
-    public class CalculateShading : VariableParameterComponent
+    public class SolveShading : VariableParameterComponent
     {
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
@@ -26,9 +26,9 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// <summary>
         /// Initializes a new instance of the SAM_point3D class.
         /// </summary>
-        public CalculateShading()
-          : base("Solar.CalculateShading", "Solar.CalculateShading",
-              "Calculate Shading for ShadingModel",
+        public SolveShading()
+          : base("Solar.SolveShading", "Solar.SolveShading",
+              "Solve Shading for ShadingModel",
               "DiGi", "DiGi.Solar")
         {
         }
@@ -43,7 +43,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 List<Param> result =
                 [
                     new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "ShadingModel", Access = GH_ParamAccess.item}, ParameterVisibility.Binding),
-                    new Param(new GooShadingCalculatorOptionsParam() { Name = "ShadingCalculatorOptions", NickName = "ShadingCalculatorOptions", Description = "ShadingCalculatorOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooShadingSolverOptionsParam() { Name = "ShadingSolverOptions", NickName = "ShadingSolverOptions", Description = "ShadingSolverOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
                 ];
 
                 return [.. result];
@@ -60,7 +60,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 List<Param> result =
                 [
                     new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "DiGi Solar ShadingModel", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
-                    new Param(new GooShadingCalculationResultParam() { Name = "ShadingCalculationResults", NickName = "ShadingCalculationResults", Description = "DiGi Solar ShadingCalculationResult", Access = GH_ParamAccess.list, Optional = true }, ParameterVisibility.Voluntary),
+                    new Param(new GooShadingSolverResultParam() { Name = "ShadingSolverResults", NickName = "ShadingSolverResults", Description = "DiGi Solar ShadingSolverResult", Access = GH_ParamAccess.list, Optional = true }, ParameterVisibility.Voluntary),
                 ];
 
                 return [.. result];
@@ -92,16 +92,16 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 return;
             }
 
-            index = Params.IndexOfInputParam("ShadingCalculatorOptions");
-            ComputeSharp.Classes.ShadingCalculatorOptions? shadingCalculatorOptions = null;
-            if (index == -1 || !dataAccess.GetData(index, ref shadingCalculatorOptions) || shadingCalculatorOptions == null)
+            index = Params.IndexOfInputParam("ShadingSolverOptions");
+            ComputeSharp.Classes.ShadingSolverOptions? shadingSolverOptions = null;
+            if (index == -1 || !dataAccess.GetData(index, ref shadingSolverOptions) || shadingSolverOptions == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
-            ShadingCalculator shadingCalculator = new (shadingModel, shadingCalculatorOptions);
-            shadingCalculator.Calculate();
+            ShadingSolver shadingSolver = new (shadingModel, shadingSolverOptions);
+            shadingSolver.Solve();
 
             index = Params.IndexOfOutputParam("ShadingModel");
             if (index != -1)
@@ -109,11 +109,11 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 dataAccess.SetData(index, shadingModel == null ? null : new GooShadingModel(shadingModel));
             }
 
-            index = Params.IndexOfOutputParam("ShadingCalculationResults");
+            index = Params.IndexOfOutputParam("ShadingSolverResults");
             if (index != -1)
             {
-                List<IShadingCalculationResult>? shadingCalculationResults = shadingModel!.GetShadingCalculationResults<IShadingCalculationResult>();
-                dataAccess.SetDataList(index, shadingCalculationResults?.ConvertAll(x => new GooShadingCalculationResult(x)));
+                List<IShadingSolverResult>? shadingColverResults = shadingModel!.GetShadingSolverResults<IShadingSolverResult>();
+                dataAccess.SetDataList(index, shadingColverResults?.ConvertAll(x => new GooShadingSolverResult(x)));
             }
         }
     }

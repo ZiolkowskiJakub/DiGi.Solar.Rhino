@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.ComputeSharp.Rhino.Classes
 {
-    public class ShadingCalculatorOptions : VariableParameterComponent
+    public class ShadingSolverOptions : VariableParameterComponent
     {
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
@@ -26,9 +26,9 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// <summary>
         /// Initializes a new instance of the SAM_point3D class.
         /// </summary>
-        public ShadingCalculatorOptions()
-          : base("Solar.ShadingCalculatorOptions", "Solar.ShadingCalculatorOptions",
-              "Calculate ShadingCalculatorOptions",
+        public ShadingSolverOptions()
+          : base("Solar.ShadingSolverOptions", "Solar.ShadingSolverOptions",
+              "Create ShadingSolverOptions",
               "DiGi", "DiGi.Solar")
         {
         }
@@ -43,7 +43,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 List<Param> result =
                 [
                     new Param(new GooTimeSeriesParam() { Name = "TimeSeries", NickName = "TimeSeries", Description = "TimeSeries", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
-                    new Param(new GooEnumParam() { Name = "ShadingCalculationType", NickName = "ShadingCalculationType", Description = "ShadingCalculationType", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooEnumParam() { Name = "ShadingSolverType", NickName = "ShadingSolverType", Description = "ShadingSolverType", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
                 ];
 
                 Param_Number param_Number;
@@ -69,7 +69,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
             {
                 List<Param> result =
                 [
-                    new Param(new GooShadingCalculatorOptionsParam() { Name = "ShadingCalculatorOptions", NickName = "ShadingCalculatorOptions", Description = "DiGi Solar ShadingCalculatorOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooShadingSolverOptionsParam() { Name = "ShadingSolverOptions", NickName = "ShadingSolverOptions", Description = "DiGi Solar ShadingSolverOptions", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
                 ];
                 return [.. result];
             }
@@ -93,9 +93,9 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 return;
             }
 
-            index = Params.IndexOfInputParam("ShadingCalculationType");
-            Enums.ShadingCalculationType shadingCalculationType = Enums.ShadingCalculationType.Undefined;
-            if (index == -1 || !dataAccess.GetData(index, ref shadingCalculationType) || shadingCalculationType == Enums.ShadingCalculationType.Undefined)
+            index = Params.IndexOfInputParam("ShadingSolverType");
+            Enums.ShadingSolverType shadingSolverType = Enums.ShadingSolverType.Undefined;
+            if (index == -1 || !dataAccess.GetData(index, ref shadingSolverType) || shadingSolverType == Enums.ShadingSolverType.Undefined)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
@@ -115,18 +115,18 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 dataAccess.GetData(index, ref angleTolerance);
             }
 
-            ComputeSharp.Classes.ShadingCalculatorOptions shadingCalculatorOptions = new()
+            ComputeSharp.Classes.ShadingSolverOptions shadingSolverOptions = new()
             {
                 TimeSeries = timeSeries,
-                ShadingCalculationType = shadingCalculationType,
+                ShadingSolverType = shadingSolverType,
                 Tolerance = tolerance,
                 AngleTolerance = angleTolerance,
             };
 
-            index = Params.IndexOfOutputParam("ShadingCalculatorOptions");
+            index = Params.IndexOfOutputParam("ShadingSolverOptions");
             if (index != -1)
             {
-                dataAccess.SetData(index, shadingCalculatorOptions == null ? null : new GooShadingCalculatorOptions(shadingCalculatorOptions));
+                dataAccess.SetData(index, shadingSolverOptions == null ? null : new GooShadingSolverOptions(shadingSolverOptions));
             }
         }
     }

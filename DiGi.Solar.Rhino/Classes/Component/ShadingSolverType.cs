@@ -3,7 +3,7 @@ using System;
 
 namespace DiGi.Solar.Rhino.Classes
 {
-    public class ShadingCalculationType : EnumComponent<Enums.ShadingCalculationType>
+    public class ShadingSolverType : EnumComponent<Enums.ShadingSolverType>
     {
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
@@ -13,7 +13,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Panel Type
         /// </summary>
-        public ShadingCalculationType()
+        public ShadingSolverType()
           : base("Solar")
         {
         }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.Rhino.Classes
 {
-    public class ShadingCalculationResults : VariableParameterComponent
+    public class ShadingSolverResults : VariableParameterComponent
     {
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
@@ -26,9 +26,9 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Initializes a new instance of the SAM_point3D class.
         /// </summary>
-        public ShadingCalculationResults()
-          : base("Solar.ShadingCalculationResults", "Solar.ShadingCalculationResults",
-              "Gets ShadingCalculationResults",
+        public ShadingSolverResults()
+          : base("Solar.ShadingSolverResults", "Solar.ShadingSolverResults",
+              "Gets ShadingSolverResults",
               "DiGi", "DiGi.Solar")
         {
         }
@@ -45,7 +45,7 @@ namespace DiGi.Solar.Rhino.Classes
                     new Param(new GooShadingModelParam() { Name = "ShadingModel", NickName = "ShadingModel", Description = "DiGi Solar ShadingModel", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
                     new Param(new Param_Time() { Name = "Time", NickName = "Time", Description = "Time", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Binding),
                     new Param(new GooShadingElementParam() { Name = "ShadingElement", NickName = "ShadingElement", Description = "ShadingElement", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary),
-                    new Param(new GooEnumParam() { Name = "ShadingCalculationType", NickName = "ShadingCalculationType", Description = "ShadingCalculationType", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary),
+                    new Param(new GooEnumParam() { Name = "ShadingSolverType", NickName = "ShadingSolverType", Description = "ShadingSolverType", Access = GH_ParamAccess.item, Optional = true }, ParameterVisibility.Voluntary),
                 ];
 
                 return [.. result];
@@ -61,7 +61,7 @@ namespace DiGi.Solar.Rhino.Classes
             {
                 List<Param> result =
                 [
-                    new Param(new GooShadingCalculationResultParam() { Name = "ShadingCalculationResults", NickName = "ShadingCalculationResults", Description = "ShadingCalculationResults", Access = GH_ParamAccess.list }, ParameterVisibility.Binding),
+                    new Param(new GooShadingSolverResultParam() { Name = "ShadingSolverResults", NickName = "ShadingSolverResults", Description = "ShadingSolverResults", Access = GH_ParamAccess.list }, ParameterVisibility.Binding),
                 ];
                 return [.. result];
             }
@@ -106,59 +106,59 @@ namespace DiGi.Solar.Rhino.Classes
                 }
             }
 
-            index = Params.IndexOfInputParam("ShadingCalculationType");
-            Enums.ShadingCalculationType? shadingCalculationType = null;
+            index = Params.IndexOfInputParam("ShadingSolverType");
+            Enums.ShadingSolverType? shadingSolverType = null;
             if (index != -1)
             {
-                Enums.ShadingCalculationType shadingCalculationType_Temp = Enums.ShadingCalculationType.Undefined;
-                if (dataAccess.GetData(index, ref shadingCalculationType_Temp))
+                Enums.ShadingSolverType shadingSolverType_Temp = Enums.ShadingSolverType.Undefined;
+                if (dataAccess.GetData(index, ref shadingSolverType_Temp))
                 {
-                    shadingCalculationType = shadingCalculationType_Temp;
+                    shadingSolverType = shadingSolverType_Temp;
                 }
             }
 
-            List<IShadingCalculationResult>? shadingCalculationResults = null;
+            List<IShadingSolverResult>? shadingSolverResults = null;
 
             if(shadingElement != null)
             {
-                if(shadingCalculationType == null || !shadingCalculationType.HasValue)
+                if(shadingSolverType == null || !shadingSolverType.HasValue)
                 {
-                    shadingCalculationResults = shadingModel.GetShadingCalculationResults<IShadingCalculationResult>(shadingElement);
+                    shadingSolverResults = shadingModel.GetShadingSolverResults<IShadingSolverResult>(shadingElement);
                 }
-                else if (shadingCalculationType.Value == Enums.ShadingCalculationType.Geometrical)
+                else if (shadingSolverType.Value == Enums.ShadingSolverType.Geometrical)
                 {
-                    shadingCalculationResults = shadingModel.GetShadingCalculationResults<GeometricalShadingCalculationResult>(shadingElement)?.ConvertAll(x => (IShadingCalculationResult)x);
+                    shadingSolverResults = shadingModel.GetShadingSolverResults<GeometricalShadingSolverResult>(shadingElement)?.ConvertAll(x => (IShadingSolverResult)x);
                 }
-                else if (shadingCalculationType.Value == Enums.ShadingCalculationType.Numerical)
+                else if (shadingSolverType.Value == Enums.ShadingSolverType.Numerical)
                 {
-                    shadingCalculationResults = shadingModel.GetShadingCalculationResults<NumericalShadingCalculationResult>(shadingElement)?.ConvertAll(x => (IShadingCalculationResult)x);
+                    shadingSolverResults = shadingModel.GetShadingSolverResults<NumericalShadingSolverResult>(shadingElement)?.ConvertAll(x => (IShadingSolverResult)x);
                 }
             }
             else
             {
-                if (shadingCalculationType == null || !shadingCalculationType.HasValue)
+                if (shadingSolverType == null || !shadingSolverType.HasValue)
                 {
-                    shadingCalculationResults = shadingModel.GetShadingCalculationResults<IShadingCalculationResult>();
+                    shadingSolverResults = shadingModel.GetShadingSolverResults<IShadingSolverResult>();
                 }
-                else if (shadingCalculationType.Value == Enums.ShadingCalculationType.Geometrical)
+                else if (shadingSolverType.Value == Enums.ShadingSolverType.Geometrical)
                 {
-                    shadingCalculationResults = shadingModel.GetShadingCalculationResults<GeometricalShadingCalculationResult>()?.ConvertAll(x => (IShadingCalculationResult)x);
+                    shadingSolverResults = shadingModel.GetShadingSolverResults<GeometricalShadingSolverResult>()?.ConvertAll(x => (IShadingSolverResult)x);
                 }
-                else if (shadingCalculationType.Value == Enums.ShadingCalculationType.Numerical)
+                else if (shadingSolverType.Value == Enums.ShadingSolverType.Numerical)
                 {
-                    shadingCalculationResults = shadingModel.GetShadingCalculationResults<NumericalShadingCalculationResult>()?.ConvertAll(x => (IShadingCalculationResult)x);
+                    shadingSolverResults = shadingModel.GetShadingSolverResults<NumericalShadingSolverResult>()?.ConvertAll(x => (IShadingSolverResult)x);
                 }
             }
 
             if(dateTime != null && dateTime.HasValue )
             {
-                shadingCalculationResults = shadingCalculationResults?.FindAll(x => x.DateTime == dateTime.Value);
+                shadingSolverResults = shadingSolverResults?.FindAll(x => x.DateTime == dateTime.Value);
             }
 
-            index = Params.IndexOfOutputParam("ShadingCalculationResults");
+            index = Params.IndexOfOutputParam("ShadingSolverResults");
             if (index != -1)
             {
-                dataAccess.SetDataList(index, shadingCalculationResults?.ConvertAll(x => new GooShadingCalculationResult(x)));
+                dataAccess.SetDataList(index, shadingSolverResults?.ConvertAll(x => new GooShadingSolverResult(x)));
             }
         }
     }

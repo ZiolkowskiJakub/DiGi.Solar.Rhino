@@ -8,14 +8,14 @@ namespace DiGi.Solar.Rhino
     public static partial class Inspect
     {
         [Inspect("PolygonalFace3Ds", "PolygonalFace3Ds", "PolygonalFace3Ds")]
-        public static IEnumerable? PolygonalFace3Ds(this GeometricalShadingCalculationResult? geometricalShadingCalculationResult)
+        public static IEnumerable? PolygonalFace3Ds(this GeometricalShadingSolverResult? geometricalShadingSolverResult)
         {
-            if (geometricalShadingCalculationResult == null)
+            if (geometricalShadingSolverResult == null)
             {
                 return null;
             }
 
-            return geometricalShadingCalculationResult?.GetPolygonalFace3Ds()?.ConvertAll(x => new GooPolygonalFace3D(x));
+            return geometricalShadingSolverResult?.GetPolygonalFace3Ds()?.ConvertAll(x => new GooPolygonalFace3D(x));
         }
     }
 }

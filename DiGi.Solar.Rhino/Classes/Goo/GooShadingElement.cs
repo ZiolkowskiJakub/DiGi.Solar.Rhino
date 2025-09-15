@@ -7,39 +7,39 @@ using System;
 
 namespace DiGi.Solar.Rhino.Classes
 {
-    public class GooShadingCalculationResult : GooBakeAwareSerializableObject<IShadingCalculationResult>
+    public class GooShadingSolverResult : GooBakeAwareSerializableObject<IShadingSolverResult>
     {
-        public GooShadingCalculationResult()
+        public GooShadingSolverResult()
             : base()
         {
         }
 
-        public GooShadingCalculationResult(IShadingCalculationResult? shadingCalculationResult)
+        public GooShadingSolverResult(IShadingSolverResult? shadingSolverResult)
         {
-            Value = shadingCalculationResult;
+            Value = shadingSolverResult;
         }
 
         public override IGeometry[]? Geometries
         {
             get
             {
-                if (Value is not GeometricalShadingCalculationResult geometricalShadingCalculationResult)
+                if (Value is not GeometricalShadingSolverResult geometricalShadingSolverResult)
                 {
                     return null;
                 }
 
-                return geometricalShadingCalculationResult.GetPolygonalFace3Ds()?.ToArray();
+                return geometricalShadingSolverResult.GetPolygonalFace3Ds()?.ToArray();
             }
         }
 
         public override IGH_Goo Duplicate()
         {
-            return new GooShadingCalculationResult(Value);
+            return new GooShadingSolverResult(Value);
         }
 
     }
 
-    public class GooShadingCalculationResultParam : GooBakeAwareSerializableParam<GooShadingCalculationResult, IShadingCalculationResult>
+    public class GooShadingSolverResultParam : GooBakeAwareSerializableParam<GooShadingSolverResult, IShadingSolverResult>
     {
         public override Guid ComponentGuid => new ("7e77b407-41d2-48fa-aead-a314514721d7");
 
