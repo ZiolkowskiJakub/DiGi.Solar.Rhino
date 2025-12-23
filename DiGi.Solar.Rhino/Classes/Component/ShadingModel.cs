@@ -13,7 +13,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("4a4d50a7-855b-43d8-970f-0722df8f69d2");
+        public override Guid ComponentGuid => new("4a4d50a7-855b-43d8-970f-0722df8f69d2");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -100,7 +100,7 @@ namespace DiGi.Solar.Rhino.Classes
             }
 
             Solar.Classes.ShadingModel shadingModel = new(uTC, coordinates);
-            foreach(IShadingElement shadingElement in shadingElements)
+            foreach (IShadingElement shadingElement in shadingElements)
             {
                 shadingModel.Update(shadingElement);
             }

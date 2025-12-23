@@ -1,5 +1,4 @@
-﻿using DiGi.Core.Interfaces;
-using DiGi.GIS.Rhino.Classes;
+﻿using DiGi.GIS.Rhino.Classes;
 using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
 using DiGi.Rhino.Geometry.Spatial.Classes;
@@ -15,7 +14,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("1d5fddd1-6565-41a7-93ca-f405556cb1fe");
+        public override Guid ComponentGuid => new("1d5fddd1-6565-41a7-93ca-f405556cb1fe");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -92,7 +91,7 @@ namespace DiGi.Solar.Rhino.Classes
 
             index = Params.IndexOfInputParam("Time");
             DateTime dateTime = DateTime.Now;
-            if (index == -1 || !dataAccess.GetData(index, ref dateTime) )
+            if (index == -1 || !dataAccess.GetData(index, ref dateTime))
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;

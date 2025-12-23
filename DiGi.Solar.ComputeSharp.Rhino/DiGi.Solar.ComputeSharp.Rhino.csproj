@@ -47,7 +47,7 @@
 			<HintPath>..\..\DiGi.Rhino\bin\DiGi.Rhino.Geometry.dll</HintPath>
 		</Reference>
 		<Reference Include="DiGi.Solar">
-			<HintPath>..\..\DiGi.Solar\bin\DiGi.Solar.dll</HintPath>
+		  <HintPath>..\..\DiGi.Solar\bin\DiGi.Solar.dll</HintPath>
 		</Reference>
 		<Reference Include="DiGi.Solar.ComputeSharp">
 		  <HintPath>..\..\DiGi.Solar\bin\DiGi.Solar.ComputeSharp.dll</HintPath>

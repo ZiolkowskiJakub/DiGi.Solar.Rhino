@@ -36,12 +36,11 @@ namespace DiGi.Solar.Rhino.Classes
         {
             return new GooShadingSolverResult(Value);
         }
-
     }
 
     public class GooShadingSolverResultParam : GooBakeAwareSerializableParam<GooShadingSolverResult, IShadingSolverResult>
     {
-        public override Guid ComponentGuid => new ("7e77b407-41d2-48fa-aead-a314514721d7");
+        public override Guid ComponentGuid => new("7e77b407-41d2-48fa-aead-a314514721d7");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }

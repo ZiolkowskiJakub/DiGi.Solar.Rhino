@@ -14,7 +14,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("5e94ec0b-6a8b-4d75-9f10-41313b4eb2fc");
+        public override Guid ComponentGuid => new("5e94ec0b-6a8b-4d75-9f10-41313b4eb2fc");
 
         /// <summary>
         /// Provides an Icon for the component.

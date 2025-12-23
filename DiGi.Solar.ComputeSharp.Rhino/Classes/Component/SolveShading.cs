@@ -14,7 +14,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("89b2166c-ffd3-4f38-b8d2-a28f578dae7f");
+        public override Guid ComponentGuid => new("89b2166c-ffd3-4f38-b8d2-a28f578dae7f");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -100,7 +100,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 return;
             }
 
-            ShadingSolver shadingSolver = new (shadingModel, shadingSolverOptions);
+            ShadingSolver shadingSolver = new(shadingModel, shadingSolverOptions);
             shadingSolver.Solve();
 
             index = Params.IndexOfOutputParam("ShadingModel");

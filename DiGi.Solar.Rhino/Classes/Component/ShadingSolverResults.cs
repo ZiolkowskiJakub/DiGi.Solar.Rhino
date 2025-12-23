@@ -14,7 +14,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("2d97950d-7677-4490-865a-949968b3814c");
+        public override Guid ComponentGuid => new("2d97950d-7677-4490-865a-949968b3814c");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -89,8 +89,8 @@ namespace DiGi.Solar.Rhino.Classes
             DateTime? dateTime = null;
             if (index != -1)
             {
-                DateTime dateTime_Temp = DateTime.MaxValue; 
-                if(dataAccess.GetData(index, ref dateTime_Temp) && dateTime_Temp != DateTime.MaxValue)
+                DateTime dateTime_Temp = DateTime.MaxValue;
+                if (dataAccess.GetData(index, ref dateTime_Temp) && dateTime_Temp != DateTime.MaxValue)
                 {
                     dateTime = dateTime_Temp;
                 }
@@ -100,7 +100,7 @@ namespace DiGi.Solar.Rhino.Classes
             IShadingElement? shadingElement = null;
             if (index != -1)
             {
-                if(!dataAccess.GetData(index, ref shadingElement))
+                if (!dataAccess.GetData(index, ref shadingElement))
                 {
                     shadingElement = null;
                 }
@@ -119,9 +119,9 @@ namespace DiGi.Solar.Rhino.Classes
 
             List<IShadingSolverResult>? shadingSolverResults = null;
 
-            if(shadingElement != null)
+            if (shadingElement != null)
             {
-                if(shadingSolverType == null || !shadingSolverType.HasValue)
+                if (shadingSolverType == null || !shadingSolverType.HasValue)
                 {
                     shadingSolverResults = shadingModel.GetShadingSolverResults<IShadingSolverResult>(shadingElement);
                 }
@@ -150,7 +150,7 @@ namespace DiGi.Solar.Rhino.Classes
                 }
             }
 
-            if(dateTime != null && dateTime.HasValue )
+            if (dateTime != null && dateTime.HasValue)
             {
                 shadingSolverResults = shadingSolverResults?.FindAll(x => x.DateTime == dateTime.Value);
             }

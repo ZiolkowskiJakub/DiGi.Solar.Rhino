@@ -14,7 +14,7 @@ namespace DiGi.Solar.Rhino.Classes
         //Return a short string describing the purpose of this GHA library.
         public override string Description => "";
 
-        public override Guid Id => new ("f72f18e6-38d7-45c3-9104-59b68498552f");
+        public override Guid Id => new("f72f18e6-38d7-45c3-9104-59b68498552f");
 
         //Return a string identifying you or your company.
         public override string AuthorName => "Jakub Ziolkowski";
@@ -23,4 +23,3 @@ namespace DiGi.Solar.Rhino.Classes
         public override string AuthorContact => "jakubziolkowski@digiproject.uk";
     }
 }
-

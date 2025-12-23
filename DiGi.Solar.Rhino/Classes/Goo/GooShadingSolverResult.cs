@@ -1,5 +1,4 @@
 ﻿using DiGi.Geometry.Core.Interfaces;
-using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using DiGi.Rhino.Geometry.Core.Classes;
 using DiGi.Solar.Interfaces;
@@ -32,12 +31,11 @@ namespace DiGi.Solar.Rhino.Classes
         {
             return new GooShadingElement(Value);
         }
-
     }
 
     public class GooShadingElementParam : GooBakeAwareSerializableParam<GooShadingElement, IShadingElement>
     {
-        public override Guid ComponentGuid => new ("60d50846-5c48-42d9-bc75-59fe2c4ae4d7");
+        public override Guid ComponentGuid => new("60d50846-5c48-42d9-bc75-59fe2c4ae4d7");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }

@@ -31,12 +31,11 @@ namespace DiGi.Solar.Rhino.Classes
         {
             return new GooShadingModel(Value);
         }
-
     }
 
     public class GooShadingModelParam : GooBakeAwareSerializableParam<GooShadingModel, Solar.Classes.ShadingModel>
     {
-        public override Guid ComponentGuid => new ("994c9cee-be9b-4c4f-acb7-59e2cab747fd");
+        public override Guid ComponentGuid => new("994c9cee-be9b-4c4f-acb7-59e2cab747fd");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }

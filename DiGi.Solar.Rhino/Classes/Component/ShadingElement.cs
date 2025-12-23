@@ -1,5 +1,4 @@
-﻿using DiGi.Geometry.Spatial.Classes;
-using DiGi.Geometry.Spatial.Interfaces;
+﻿using DiGi.Geometry.Spatial.Interfaces;
 using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
 using DiGi.Rhino.Geometry.Spatial.Classes;
@@ -15,7 +14,7 @@ namespace DiGi.Solar.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("b3cf736f-8cfe-41b2-93af-fb802f5e12a8");
+        public override Guid ComponentGuid => new("b3cf736f-8cfe-41b2-93af-fb802f5e12a8");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -99,7 +98,7 @@ namespace DiGi.Solar.Rhino.Classes
                 dataAccess.GetData(index, ref shadingOnly);
             }
 
-            Solar.Classes.ShadingElement shadingElement = new (reference, polygonalFace3D, shadingOnly);
+            Solar.Classes.ShadingElement shadingElement = new(reference, polygonalFace3D, shadingOnly);
 
             index = Params.IndexOfOutputParam("ShadingElement");
             if (index != -1)
