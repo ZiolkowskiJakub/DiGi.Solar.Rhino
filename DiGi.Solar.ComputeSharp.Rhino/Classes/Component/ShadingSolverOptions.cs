@@ -49,11 +49,11 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 Param_Number param_Number;
 
                 param_Number = new Param_Number() { Name = "AngleTolerance", NickName = "AngleTolerance", Description = "Angle tolerance", Access = GH_ParamAccess.item, Optional = true };
-                param_Number.SetPersistentData(Core.Constans.Tolerance.Angle / 2);
+                param_Number.SetPersistentData(Core.Constants.Tolerance.Angle / 2);
                 result.Add(new Param(param_Number, ParameterVisibility.Voluntary));
 
                 param_Number = new Param_Number() { Name = "Tolerance", NickName = "Tolerance", Description = "Tolerance", Access = GH_ParamAccess.item, Optional = true };
-                param_Number.SetPersistentData(Core.Constans.Tolerance.Distance);
+                param_Number.SetPersistentData(Core.Constants.Tolerance.Distance);
                 result.Add(new Param(param_Number, ParameterVisibility.Voluntary));
 
                 return [.. result];
@@ -101,14 +101,14 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 return;
             }
 
-            double tolerance = Core.Constans.Tolerance.Distance;
+            double tolerance = Core.Constants.Tolerance.Distance;
             index = Params.IndexOfInputParam("Tolerance");
             if (index != -1)
             {
                 dataAccess.GetData(index, ref tolerance);
             }
 
-            double angleTolerance = Core.Constans.Tolerance.Angle / 2;
+            double angleTolerance = Core.Constants.Tolerance.Angle / 2;
             index = Params.IndexOfInputParam("AngleTolerance");
             if (index != -1)
             {
