@@ -9,6 +9,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that calculates the sun direction based on geographic coordinates, UTC offset, and a specific date and time.
+    /// </summary>
     public class SunDirection : VariableParameterComponent
     {
         /// <summary>
@@ -17,14 +20,12 @@ namespace DiGi.Solar.Rhino.Classes
         public override Guid ComponentGuid => new("1d5fddd1-6565-41a7-93ca-f405556cb1fe");
 
         /// <summary>
-        /// Provides an Icon for the component.
+        /// Gets the exposure level of the component, which determines its visibility and behavior on the Grasshopper canvas.
         /// </summary>
-        //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
-
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="SunDirection"/> class.
         /// </summary>
         public SunDirection()
           : base("Solar.SunDirection", "Solar.SunDirection",

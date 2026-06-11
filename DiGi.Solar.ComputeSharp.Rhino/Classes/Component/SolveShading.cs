@@ -9,6 +9,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.ComputeSharp.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that solves shading analysis for a specified shading model and solver options.
+    /// </summary>
     public class SolveShading : VariableParameterComponent
     {
         /// <summary>
@@ -17,14 +20,12 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         public override Guid ComponentGuid => new("89b2166c-ffd3-4f38-b8d2-a28f578dae7f");
 
         /// <summary>
-        /// Provides an Icon for the component.
+        /// Gets the exposure level of the component, which defines how it is displayed in the Grasshopper interface.
         /// </summary>
-        //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
-
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="SolveShading"/> class.
         /// </summary>
         public SolveShading()
           : base("Solar.SolveShading", "Solar.SolveShading",

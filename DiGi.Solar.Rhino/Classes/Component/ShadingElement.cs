@@ -1,4 +1,4 @@
-﻿using DiGi.Geometry.Spatial.Interfaces;
+using DiGi.Geometry.Spatial.Interfaces;
 using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
 using DiGi.Rhino.Geometry.Spatial.Classes;
@@ -9,6 +9,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that creates a shading element based on a polygonal face.
+    /// </summary>
     public class ShadingElement : VariableParameterComponent
     {
         /// <summary>
@@ -16,15 +19,15 @@ namespace DiGi.Solar.Rhino.Classes
         /// </summary>
         public override Guid ComponentGuid => new("b3cf736f-8cfe-41b2-93af-fb802f5e12a8");
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 
+        /// <summary>
+        /// Gets the exposure level of the component, determining how it is displayed in the Grasshopper canvas.
+        /// </summary>
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="ShadingElement"/> class.
         /// </summary>
         public ShadingElement()
           : base("Solar.ShadingElement", "Solar.ShadingElement",

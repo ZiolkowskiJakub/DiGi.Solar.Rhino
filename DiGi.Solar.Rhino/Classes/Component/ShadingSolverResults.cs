@@ -9,6 +9,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.Rhino.Classes
 {
+    /// <summary>
+    /// A Grasshopper component that retrieves shading solver results based on a specified shading model and optional parameters such as time, element, and solver type.
+    /// </summary>
     public class ShadingSolverResults : VariableParameterComponent
     {
         /// <summary>
@@ -17,14 +20,12 @@ namespace DiGi.Solar.Rhino.Classes
         public override Guid ComponentGuid => new("2d97950d-7677-4490-865a-949968b3814c");
 
         /// <summary>
-        /// Provides an Icon for the component.
+        /// Gets the exposure level of the component, which determines how it is displayed in the Grasshopper canvas.
         /// </summary>
-        //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
-
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="ShadingSolverResults"/> class.
         /// </summary>
         public ShadingSolverResults()
           : base("Solar.ShadingSolverResults", "Solar.ShadingSolverResults",

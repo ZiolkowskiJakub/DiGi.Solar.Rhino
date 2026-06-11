@@ -1,4 +1,4 @@
-﻿using DiGi.Core.Interfaces;
+using DiGi.Core.Interfaces;
 using DiGi.GIS.Rhino.Classes;
 using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
@@ -9,6 +9,10 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.ComputeSharp.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that defines the options for the shading solver, 
+    /// such as time series data, solver type, and geometric tolerances.
+    /// </summary>
     public class ShadingSolverOptions : VariableParameterComponent
     {
         /// <summary>
@@ -16,15 +20,15 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// </summary>
         public override Guid ComponentGuid => new("ae9530b9-6069-40f7-aa41-8971fcb4c4b9");
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 
+        /// <summary>
+        /// Gets the exposure level of the component.
+        /// </summary>
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="ShadingSolverOptions" /> class.
         /// </summary>
         public ShadingSolverOptions()
           : base("Solar.ShadingSolverOptions", "Solar.ShadingSolverOptions",

@@ -1,4 +1,4 @@
-﻿using DiGi.Rhino.Core.Classes;
+using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
 using DiGi.Solar.Interfaces;
 using Grasshopper.Kernel;
@@ -9,6 +9,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that calculates the shading factor for a specific shading element at a given time using a specified shading model.
+    /// </summary>
     public class ShadingFactor : VariableParameterComponent
     {
         /// <summary>
@@ -16,15 +19,15 @@ namespace DiGi.Solar.Rhino.Classes
         /// </summary>
         public override Guid ComponentGuid => new("5e94ec0b-6a8b-4d75-9f10-41313b4eb2fc");
 
-        /// <summary>
-        /// Provides an Icon for the component.
-        /// </summary>
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 
+        /// <summary>
+        /// Gets the exposure of the component, which determines how it is displayed in the Grasshopper canvas.
+        /// </summary>
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="ShadingFactor"/> class.
         /// </summary>
         public ShadingFactor()
           : base("Solar.ShadingFactor", "Solar.ShadingFactor",

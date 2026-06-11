@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Solar.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that creates and manages a solar shading model based on UTC coordinates and shading elements.
+    /// </summary>
     public class ShadingModel : VariableParameterComponent
     {
         /// <summary>
@@ -16,14 +19,12 @@ namespace DiGi.Solar.Rhino.Classes
         public override Guid ComponentGuid => new("4a4d50a7-855b-43d8-970f-0722df8f69d2");
 
         /// <summary>
-        /// Provides an Icon for the component.
+        /// Gets the exposure level of the component, determining how it is displayed in the Grasshopper canvas.
         /// </summary>
-        //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
-
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="T:DiGi.Solar.Rhino.Classes.ShadingModel" /> class.
         /// </summary>
         public ShadingModel()
           : base("Solar.ShadingModel", "Solar.ShadingModel",
