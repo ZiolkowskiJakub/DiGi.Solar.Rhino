@@ -1,4 +1,4 @@
-﻿using DiGi.Core;
+using DiGi.Core;
 using DiGi.Geometry.Core.Interfaces;
 using DiGi.Rhino.Geometry.Core.Classes;
 using DiGi.Solar.Interfaces;
@@ -29,10 +29,7 @@ namespace DiGi.Solar.Rhino.Classes
             Value = shadingModel;
         }
 
-        /// <summary>
-        /// Gets the collection of geometries associated with the current shading model.
-        /// </summary>
-        /// <returns>An array of <see cref="IGeometry"/> objects representing the shading elements, or null if no value is present.</returns>
+        /// <summary> Gets the collection of geometries associated with the current shading model. </summary>
         public override IGeometry[]? Geometries
         {
             get
@@ -56,10 +53,7 @@ namespace DiGi.Solar.Rhino.Classes
     /// </summary>
     public class GooShadingModelParam : GooBakeAwareSerializableParam<GooShadingModel, Solar.Classes.ShadingModel>
     {
-        /// <summary>
-        /// Gets the unique identifier for the shading model component.
-        /// </summary>
-        /// <returns>The <see cref="Guid"/> associated with this parameter type.</returns>
+        /// <summary> Gets the unique identifier for the shading model component. </summary>
         public override Guid ComponentGuid => new("994c9cee-be9b-4c4f-acb7-59e2cab747fd");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;

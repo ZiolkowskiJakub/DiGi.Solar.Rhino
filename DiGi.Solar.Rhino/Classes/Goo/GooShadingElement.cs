@@ -1,4 +1,4 @@
-﻿using DiGi.Geometry.Core.Interfaces;
+using DiGi.Geometry.Core.Interfaces;
 using DiGi.Rhino.Geometry.Core.Classes;
 using DiGi.Solar.Classes;
 using DiGi.Solar.Interfaces;
@@ -29,10 +29,7 @@ namespace DiGi.Solar.Rhino.Classes
             Value = shadingSolverResult;
         }
 
-        /// <summary>
-        /// Gets the collection of geometries associated with the shading solver result.
-        /// </summary>
-        /// <returns>An array of <see cref="IGeometry"/> objects if the value is a geometrical shading solver result; otherwise, null.</returns>
+        /// <summary> Gets the collection of geometries associated with the shading solver result. </summary>
         public override IGeometry[]? Geometries
         {
             get
