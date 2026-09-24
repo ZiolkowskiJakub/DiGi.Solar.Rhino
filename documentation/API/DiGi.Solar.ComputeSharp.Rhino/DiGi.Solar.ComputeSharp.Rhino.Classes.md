@@ -10,10 +10,10 @@
 Represents a Grasshopper\-compatible wrapper for shading solver options, enabling serialization and data flow within the Grasshopper environment\.
 
 ```csharp
-public class GooShadingSolverOptions : DiGi.Rhino.Core.Classes.GooSerializableObject<DiGi.Solar.ComputeSharp.Classes.ShadingSolverOptions>
+public class GooShadingSolverOptions : DiGi.Rhino.Core.Classes.GooSerializableObject<DiGi.Solar.Classes.ShadingSolverOptions>
 ```
 
-Inheritance [Grasshopper\.Kernel\.Types\.GH\_Goo](https://learn.microsoft.com/en-us/dotnet/api/grasshopper.kernel.types.gh_goo 'Grasshopper\.Kernel\.Types\.GH\_Goo') → [Grasshopper\.Kernel\.Types\.IGH\_Goo](https://learn.microsoft.com/en-us/dotnet/api/grasshopper.kernel.types.igh_goo 'Grasshopper\.Kernel\.Types\.IGH\_Goo') → [GH\_IO\.GH\_ISerializable](https://learn.microsoft.com/en-us/dotnet/api/gh_io.gh_iserializable 'GH\_IO\.GH\_ISerializable') → [DiGi\.Rhino\.Core\.Classes\.GooObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooobject-1 'DiGi\.Rhino\.Core\.Classes\.GooObject\`1')[DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.computesharp.classes.shadingsolveroptions 'DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooobject-1 'DiGi\.Rhino\.Core\.Classes\.GooObject\`1') → [DiGi\.Rhino\.Core\.Classes\.GooSerializableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooserializableobject-1 'DiGi\.Rhino\.Core\.Classes\.GooSerializableObject\`1')[DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.computesharp.classes.shadingsolveroptions 'DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooserializableobject-1 'DiGi\.Rhino\.Core\.Classes\.GooSerializableObject\`1') → GooShadingSolverOptions
+Inheritance [Grasshopper\.Kernel\.Types\.GH\_Goo](https://learn.microsoft.com/en-us/dotnet/api/grasshopper.kernel.types.gh_goo 'Grasshopper\.Kernel\.Types\.GH\_Goo') → [Grasshopper\.Kernel\.Types\.IGH\_Goo](https://learn.microsoft.com/en-us/dotnet/api/grasshopper.kernel.types.igh_goo 'Grasshopper\.Kernel\.Types\.IGH\_Goo') → [GH\_IO\.GH\_ISerializable](https://learn.microsoft.com/en-us/dotnet/api/gh_io.gh_iserializable 'GH\_IO\.GH\_ISerializable') → [DiGi\.Rhino\.Core\.Classes\.GooObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooobject-1 'DiGi\.Rhino\.Core\.Classes\.GooObject\`1')[DiGi\.Solar\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.classes.shadingsolveroptions 'DiGi\.Solar\.Classes\.ShadingSolverOptions')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooobject-1 'DiGi\.Rhino\.Core\.Classes\.GooObject\`1') → [DiGi\.Rhino\.Core\.Classes\.GooSerializableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooserializableobject-1 'DiGi\.Rhino\.Core\.Classes\.GooSerializableObject\`1')[DiGi\.Solar\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.classes.shadingsolveroptions 'DiGi\.Solar\.Classes\.ShadingSolverOptions')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.gooserializableobject-1 'DiGi\.Rhino\.Core\.Classes\.GooSerializableObject\`1') → GooShadingSolverOptions
 ### Constructors
 
 <a name='DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions.GooShadingSolverOptions()'></a>
@@ -26,20 +26,20 @@ Initializes a new instance of the [GooShadingSolverOptions](DiGi.Solar.ComputeSh
 public GooShadingSolverOptions();
 ```
 
-<a name='DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions.GooShadingSolverOptions(DiGi.Solar.ComputeSharp.Classes.ShadingSolverOptions)'></a>
+<a name='DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions.GooShadingSolverOptions(DiGi.Solar.Classes.ShadingSolverOptions)'></a>
 
 ## GooShadingSolverOptions\(ShadingSolverOptions\) Constructor
 
 Initializes a new instance of the [GooShadingSolverOptions](DiGi.Solar.ComputeSharp.Rhino.Classes.md#DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions 'DiGi\.Solar\.ComputeSharp\.Rhino\.Classes\.GooShadingSolverOptions') class with the specified shading solver options\.
 
 ```csharp
-public GooShadingSolverOptions(DiGi.Solar.ComputeSharp.Classes.ShadingSolverOptions? shadingSolverOptions);
+public GooShadingSolverOptions(DiGi.Solar.Classes.ShadingSolverOptions? shadingSolverOptions);
 ```
 #### Parameters
 
-<a name='DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions.GooShadingSolverOptions(DiGi.Solar.ComputeSharp.Classes.ShadingSolverOptions).shadingSolverOptions'></a>
+<a name='DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions.GooShadingSolverOptions(DiGi.Solar.Classes.ShadingSolverOptions).shadingSolverOptions'></a>
 
-`shadingSolverOptions` [DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.computesharp.classes.shadingsolveroptions 'DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions')
+`shadingSolverOptions` [DiGi\.Solar\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.classes.shadingsolveroptions 'DiGi\.Solar\.Classes\.ShadingSolverOptions')
 
 The shading solver options to wrap\.
 ### Methods
@@ -65,10 +65,10 @@ A new [Grasshopper\.Kernel\.Types\.IGH\_Goo](https://learn.microsoft.com/en-us/d
 Represents a Grasshopper parameter component used to handle [GooShadingSolverOptions](DiGi.Solar.ComputeSharp.Rhino.Classes.md#DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions 'DiGi\.Solar\.ComputeSharp\.Rhino\.Classes\.GooShadingSolverOptions') data\.
 
 ```csharp
-public class GooShadingSolverOptionsParam : DiGi.Rhino.Core.Classes.GooPresistentParam<DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions, DiGi.Solar.ComputeSharp.Classes.ShadingSolverOptions>
+public class GooShadingSolverOptionsParam : DiGi.Rhino.Core.Classes.GooPresistentParam<DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions, DiGi.Solar.Classes.ShadingSolverOptions>
 ```
 
-Inheritance [Grasshopper\.Kernel\.GH\_PersistentParam](https://learn.microsoft.com/en-us/dotnet/api/grasshopper.kernel.gh_persistentparam 'Grasshopper\.Kernel\.GH\_PersistentParam') → [DiGi\.Rhino\.Core\.Classes\.GooPresistentParam&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.goopresistentparam-2 'DiGi\.Rhino\.Core\.Classes\.GooPresistentParam\`2')[GooShadingSolverOptions](DiGi.Solar.ComputeSharp.Rhino.Classes.md#DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions 'DiGi\.Solar\.ComputeSharp\.Rhino\.Classes\.GooShadingSolverOptions')[,](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.goopresistentparam-2 'DiGi\.Rhino\.Core\.Classes\.GooPresistentParam\`2')[DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.computesharp.classes.shadingsolveroptions 'DiGi\.Solar\.ComputeSharp\.Classes\.ShadingSolverOptions')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.goopresistentparam-2 'DiGi\.Rhino\.Core\.Classes\.GooPresistentParam\`2') → GooShadingSolverOptionsParam
+Inheritance [Grasshopper\.Kernel\.GH\_PersistentParam](https://learn.microsoft.com/en-us/dotnet/api/grasshopper.kernel.gh_persistentparam 'Grasshopper\.Kernel\.GH\_PersistentParam') → [DiGi\.Rhino\.Core\.Classes\.GooPresistentParam&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.goopresistentparam-2 'DiGi\.Rhino\.Core\.Classes\.GooPresistentParam\`2')[GooShadingSolverOptions](DiGi.Solar.ComputeSharp.Rhino.Classes.md#DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptions 'DiGi\.Solar\.ComputeSharp\.Rhino\.Classes\.GooShadingSolverOptions')[,](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.goopresistentparam-2 'DiGi\.Rhino\.Core\.Classes\.GooPresistentParam\`2')[DiGi\.Solar\.Classes\.ShadingSolverOptions](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.classes.shadingsolveroptions 'DiGi\.Solar\.Classes\.ShadingSolverOptions')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.rhino.core.classes.goopresistentparam-2 'DiGi\.Rhino\.Core\.Classes\.GooPresistentParam\`2') → GooShadingSolverOptionsParam
 ### Constructors
 
 <a name='DiGi.Solar.ComputeSharp.Rhino.Classes.GooShadingSolverOptionsParam.GooShadingSolverOptionsParam()'></a>

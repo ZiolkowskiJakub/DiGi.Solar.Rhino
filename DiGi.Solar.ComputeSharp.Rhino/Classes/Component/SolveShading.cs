@@ -94,7 +94,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("ShadingSolverOptions");
-            ComputeSharp.Classes.ShadingSolverOptions? shadingSolverOptions = null;
+            Solar.Classes.ShadingSolverOptions? shadingSolverOptions = null;
             if (index == -1 || !dataAccess.GetData(index, ref shadingSolverOptions) || shadingSolverOptions == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");

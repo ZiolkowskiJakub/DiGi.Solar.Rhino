@@ -7,7 +7,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
     /// <summary>
     /// Represents a Grasshopper-compatible wrapper for shading solver options, enabling serialization and data flow within the Grasshopper environment.
     /// </summary>
-    public class GooShadingSolverOptions : GooSerializableObject<ComputeSharp.Classes.ShadingSolverOptions>
+    public class GooShadingSolverOptions : GooSerializableObject<Solar.Classes.ShadingSolverOptions>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GooShadingSolverOptions" /> class.
@@ -21,7 +21,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
         /// Initializes a new instance of the <see cref="GooShadingSolverOptions" /> class with the specified shading solver options.
         /// </summary>
         /// <param name="shadingSolverOptions">The shading solver options to wrap.</param>
-        public GooShadingSolverOptions(ComputeSharp.Classes.ShadingSolverOptions? shadingSolverOptions)
+        public GooShadingSolverOptions(Solar.Classes.ShadingSolverOptions? shadingSolverOptions)
             : base()
         {
             Value = shadingSolverOptions;
@@ -40,7 +40,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
     /// <summary>
     /// Represents a Grasshopper parameter component used to handle <see cref="GooShadingSolverOptions" /> data.
     /// </summary>
-    public class GooShadingSolverOptionsParam : GooPresistentParam<GooShadingSolverOptions, ComputeSharp.Classes.ShadingSolverOptions>
+    public class GooShadingSolverOptionsParam : GooPresistentParam<GooShadingSolverOptions, Solar.Classes.ShadingSolverOptions>
     {
         /// <summary>
         /// Gets the unique identifier for the <see cref="GooShadingSolverOptionsParam" /> component.

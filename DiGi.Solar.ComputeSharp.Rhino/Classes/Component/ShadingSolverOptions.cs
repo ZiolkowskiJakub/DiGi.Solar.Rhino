@@ -98,8 +98,8 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("ShadingSolverType");
-            Enums.ShadingSolverType shadingSolverType = Enums.ShadingSolverType.Undefined;
-            if (index == -1 || !dataAccess.GetData(index, ref shadingSolverType) || shadingSolverType == Enums.ShadingSolverType.Undefined)
+            Solar.Enums.ShadingSolverType shadingSolverType = Solar.Enums.ShadingSolverType.Undefined;
+            if (index == -1 || !dataAccess.GetData(index, ref shadingSolverType) || shadingSolverType == Solar.Enums.ShadingSolverType.Undefined)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
@@ -119,7 +119,7 @@ namespace DiGi.Solar.ComputeSharp.Rhino.Classes
                 dataAccess.GetData(index, ref angleTolerance);
             }
 
-            ComputeSharp.Classes.ShadingSolverOptions shadingSolverOptions = new()
+            Solar.Classes.ShadingSolverOptions shadingSolverOptions = new()
             {
                 TimeSeries = timeSeries,
                 ShadingSolverType = shadingSolverType,
